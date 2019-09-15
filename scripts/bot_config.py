@@ -100,7 +100,7 @@ def update_bot_user():
                  'data': { 'password': bot['password'], 'email': 'rocket.cat@rocket.cat' }
                  })
     except Exception:
-        print("User already created.")
+        print("Not possible update user")
 
 
 def create_livechat_agent():
@@ -145,7 +145,7 @@ if __name__ == '__main__':
         print("\n\n --------- Rocket Chat Unavailable! --------\n\n")
 
     if user_header:
-        logger.info('>> Update user')
+        logger.info('>> Update rocket.cat user')
         update_bot_user()
 
         logger.info('>> Create livechat agent')
