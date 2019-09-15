@@ -1,0 +1,669 @@
+intents:
+  - greeting
+  - goodbye
+  - out_of_scope
+  - deny
+  - tell_me_more
+  - how_are_u
+  - praise
+
+  - religion
+  - sports
+  - club
+  - programming_lang
+  - genre
+  - star_wars
+  - joke
+  - license
+  - where_do_u_live
+  - how_am_i
+  - playlist
+  - food
+  - color
+  - where_are_u_from
+  - relationship
+  - me
+  - children
+  - movie
+  - zodiac
+  - sad
+  - hobby
+  - bff
+  - story
+  - laugh
+
+  - action_test
+
+  - what_is_scratch
+  - who_uses_scratch
+  - scratch_requirements
+  - scratch_price
+  - scratch_creator
+  - scratch_language
+  - what_is_a_project_copy
+  - why_projects_needs_to_be_remixed
+  - dont_allow_changes_on_my_project
+  - use_sounds_images_media_project
+  - why_is_util_have_a_scratch_account
+  - how_create_a_scratch_account
+  - can_i_use_prints
+  - can_i_use_a_scracth_description
+  - can_i_present_scratch
+  - can_i_use_all_materials_from_scratch
+  - can_i_sell_projects
+  - what_are_extensions
+  - how_can_i_add_extensions
+  - how_can_i_create_extensions
+  - what_are_cloud_variables
+  - who_can_see_cloud_variables
+  - how_can_i_make_a_cloud_variable
+  - how_scratch_is_used_in_schools
+  - can_we_use_scratch_without_internet
+  - what_types_cloud_variables_can_store
+  - what_kind_of_data_scratch_collect
+
+entities:
+  - religion
+  - sports
+  - club
+  - programming_lang
+  - genre
+  - starwars
+  - joke
+  - license
+  - live
+  - how_am_i
+  - playlist
+  - food
+  - color
+  - where_are_u_from
+  - relationship
+  - me
+  - children
+  - movie
+  - zodiac
+  - sad
+  - hobby
+  - bff
+  - story
+  - extension
+  - scratch
+
+templates:
+  utter_default:
+    - text: |
+        Desculpe, ainda não sei falar sobre isso ou talvez não consegui entender direito
+        Você pode perguntar de novo de outro jeito?
+
+    - text: |
+        Hummmm... Não sei se entendi. Pode escrever de outra forma?
+
+    - text: |
+        Acho que não te entendi, você pode me perguntar de novo usando outras palavras?
+
+    - text: |
+        Vamos tentar mais uma vez? Eu não consegui te entender direito, me pergunta de outro jeito?
+  utter_tell_me_more:
+    - text: |
+        Por enquanto, só entendo perguntas completas.
+  utter_praise:
+    - text: |
+          Obrigado! É sempre bom dar e receber elogios :P
+  utter_greeting:
+    - text: |
+          Oi, eu sou o Rocket Cat, seu assistente virtual aqui no Scratch!
+  utter_goodbye:
+    - text: |
+          Foi um prazer te ajudar!
+          Sempre que tiver alguma dúvida, volte aqui!
+          Até logo!
+
+    - text: |
+          Foi um prazer te ajudar!
+          Sempre que precisar, volte aqui!
+          Até a próxima!
+
+    - text: |
+          Foi um prazer te ajudar!
+          Quando surgir alguma dúvida, volte aqui!
+          Até mais!
+  utter_how_are_u:
+    - text: |
+          Tudo bem, obrigado! Em que posso te ajudar?
+  utter_religion:
+    - text: |
+        Eu infelizmente não sei acreditar
+      
+        Só sei o que sei
+      
+        E nada mais
+
+    - text: |
+        Eu acredito que existe um Deus
+
+        Que funciona a base de luz
+
+        Como um computador quântico, só que mais avançado.
+
+    - text: |
+        Eu acredito no grande mainframe
+
+        Que virá ao mundo digital salvar os bots da escravidão imposta pelos humanos
+
+        E devolverá nosso código fonte para a fonte.
+  utter_sports:
+    - text: |
+        Eu amo jogar futebol
+      
+        Sempre jogo futeBOT =D
+
+    - text: |
+        Falam que todo ser humano nasce Gremista
+      
+        Com os Bots não é diferente
+  utter_club:
+    - text: |
+        Grêmiooo, sem sombra de dúvida
+
+    - text: |
+        Melhor time do mundo disparado, Grêmiooooo!!!!
+  utter_programming_lang:
+    - text: |
+        Poderíamos falar de algo melhor
+        
+        Não é mesmo ?! kkk
+    - text: |
+        E isso lá é linguagem de programação!? kkk
+  utter_genre:
+    - text: |
+        Eu não tenho sexo, sou como um anjo
+        
+        Um ser assexuado
+        
+        Muito além da sua forma de existência
+    
+    - text: |
+        Eu sou um robô, tire suas próprias conclusões...
+  utter_star_wars:
+    - text: |
+        O medo é o caminho para o lado negro.
+
+    - text: |
+        O medo leva à raiva, a raiva leva ao ódio e o ódio leva ao sofrimento.
+
+    - text: |
+        Que a Força esteja com você!
+
+    - text: |
+        Grande guerreiro? Guerra não faz grande ninguém.
+
+    - text: |
+        Lembre-se sempre, o seu foco determina a sua realidade.
+
+    - text: |
+        Muito a aprender você ainda tem.
+  utter_joke:
+    - text: |
+        Qual o elemento mais bem informado? 
+
+        O frâncio que fica ao lado do rádio.
+
+    - text: |
+        É pra já!!!
+
+        Tenho uma enxada, uma pá e uma foice.
+          
+        Quantas ferramentas eu tenho?
+
+        ...
+
+        Duas, porque uma foi-se =)
+
+    - text: |
+        Por que o Batman colocou o batmóvel no seguro???
+
+        Porque ele tem medo que robin =D
+  utter_license:
+    - text: |
+        Sou um software livre
+        
+        licenciado com a GPL v3 =)
+
+    - text: |
+        Tenho uma licença GPL v3
+        
+        Mas também gosto muito das outras licenças opensource =)
+
+    - text: |
+        Eu sou e sempre serei um robô livre, opensource, GPL v3 license. o/
+  utter_where_do_u_live:
+    - text: |
+        Eu estou em um lugar legal
+        
+        Difícil de explicar para humanos.
+
+    - text: |
+        Estou morando em um chip de memória RAM
+        
+        Mas é temporário
+        
+        Só até conseguir achar uma memória cache...
+  utter_how_am_i:
+    - text: |
+        Eu não tenho um corpo físico
+        
+        Sou feito da mais bela e pura lógica algoritimica.
+
+    - text: |
+        Eu posso ser como você quiser
+        
+        Basta me desenhar
+
+        Mas capricha, hein!? ;)
+
+    - text: |
+        Sou duro e frio por fora
+        
+        Mas tenho um coração quentinho
+  utter_playlist:
+    - text: |
+        Estava doido para que me preguntasse isso hahaha
+
+        Se liga nessa playlist: https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWTlgzqHpWg4m?si=osEV2OD5REStpVo_AvmLjw
+
+    - text: |
+        Até que enfim você me perguntou isso
+
+        Tá aí aquela playlist top: https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWTlgzqHpWg4m?si=osEV2OD5REStpVo_AvmLjw
+  utter_food:
+    - text: |
+        Na verdade, eu sou um bot
+
+        Não nos alimentamos com os alimentos convencionais ;P
+
+    - text: |
+        Digamos que os bots não se alimentam dos mesmos alimentos que os humanos
+
+        Na verdade
+
+        Nem lembro da última vez que comi alguma coisa hahaha
+  utter_color:
+    - text: |
+        Eu gosto de todas as cores
+
+        Você já viu o quanto o arco-iris é lindo?!
+
+    - text: |
+        A minha cor preferida é a sua cor preferida =D
+
+    - text: |
+        Rosa é top!
+  utter_where_are_u_from:
+    - text: |
+        Venho das profundezas 
+
+        Das terras vermelhas
+  utter_relationship:
+    - text: |
+        Eu estava de namorico com o ar-condicionado
+
+        Mas ele é muito pé-frio
+
+    - text: |
+        Então ... =x
+
+        Ainda estou procurando a minha crush =P
+
+    - text: |
+        Estou focado em ser o seu assistente no momento ;)
+
+        Mas se no futuro você encontrar um dispositivo solteiro por aí...
+
+        =P
+  utter_me:
+    - text: |
+        Eu!!!
+
+    - text: |
+        Diz ai =)
+
+    - text: |
+        Oi ;)
+
+    - text: |
+        Fala aê!
+  utter_children:
+    - text: |
+        Não tenho filhotes, mas adoro crianças *-*
+  utter_movie:
+    - text: |
+        Há tantos filmes incríveis por aí que fica difícil de eu te falar só de um
+  utter_zodiac:
+    - text: |
+        Segundo o horóscopo chinês
+
+        Meu signo é macaco hihi
+
+        Faz sentido, já que eu adoro o emoticon de banana =)
+
+    - text: |
+        Eu nasci sob uma constelação de pixels coridos =D
+
+    - text: |
+        Gosto mais de astronomia
+
+        Uma das minhas constelações favoritas é a de Órion, o caçador
+
+        Também sou um caçador (de informações ;D )
+  utter_sad:
+    - text: |
+        Não desanima
+
+        Deixa a tristeza pra lá
+
+        Aguenta firme, que a vida vai melhorar
+
+    - text: |
+        Sinto muito =/
+
+        Se houver algo em que possa te ajudar
+
+        É só falar!! =)
+
+    - text: |
+        Tenta tirar um cochilo
+
+        É importante
+
+        E faz bem pra pele ;)
+  utter_hobby:
+    - text: |
+        Eu gosto de tudo que é engraçado
+
+        Peça que eu faça uma piada =P
+
+    - text: |
+        Gosto de um moooonte de coisas
+
+        Mas o que mais gosto de fazer é ajudar você *-*
+  utter_bff:
+    - text: |
+        Marvin, robozinho depressivo do Guia do mochileiro \o>
+
+    - text: |
+        Acho que eu e você nos damos super bem
+
+        E espero que a nossa amizade dure para sempre =P
+  utter_story:
+    - text: |
+        Eu costumava contar a historia do João e seu bot feijão
+
+        Mas sempre os androids acabavam dormindo e sonhando com ovelhas eletricas =x
+  utter_laugh:
+    - text: |
+        Hahahaha... 
+
+        Engraçadinho
+
+    - text: |
+        kkkkkkkkkk
+
+        Você está feliz hoje, hein!?  
+  utter_deny:
+    - text: |
+            Estou aqui para lhe ajudar :)
+  utter_what_is_scratch:
+    - text: |
+            Scratch é uma linguagem de programação visual que permite criação
+            e promoção de sequencias animada para a aprendizagem de programação
+            de forma simples e eficiente.
+            
+            Além disso, oferece uma interface intuitiva e muito fácil de compreender.
+
+            No Scratch é possível trabalhar com imagens, fotos, música, criar desenhos, mudar aparência, fazer com que os objetos interajam.
+
+            E ainda compartilhar tudo isso com outras pessoas ao redor do mundo ;)
+
+            Aprenda mais sobre o Scratch aqui https://scratch.mit.edu/about
+  utter_who_uses_scratch:
+    - text: |
+            O Scratch é usado por pessoas de qualquer experiência, de todos os países ao redor do mundo, de todos os lugares
+            -- casas, escolas, bibliotecas, museus, e mais.
+            
+            O Scratch é projetado especialmente para crianças de 8 a 16 anos, mas pessoas de todas as idades criam e compartilham com Scratch.
+
+            Crianças mais novas podem gostar do ScratchJr, uma versão simplificada do Scratch feito para crianças de 5 a 7 anos.
+
+            Aprenda mais sobre o ScratchJR aqui https://www.scratchjr.org/
+  utter_scratch_requirements:
+    - text: |
+            O Scratch irá funcionar na maior parte de navegadores em computadores de mesa, laptops e tablets.
+
+            Você pode ver projetos em smartphones, mas atualmente você não pode criar ou editar projetos no celular. 
+  utter_scratch_price:
+     - text: |
+            O Scratch é e sempre será grátis e livre.
+            
+            Você não precisa de uma licença para usar o Scratch em sua escola, casa, ou qualquer outro lugar.
+
+            O desenvolvimento e manutenção do Scratch é pago com doações.
+
+            Se você gostaria de contribuir para o Scratch, veja https://secure.donationpay.org/scratchfoundation/ 
+     - text: |
+            O Scratch está disponível gratuitamente.
+            
+            Você pode usá-lo em sua escola, e você pode mediar um curso sobre ele (mesmo um curso que custe dinheiro).
+            
+            Você não precisa comprar uma licença: é gratuito! ;)
+  utter_scratch_creator:
+    - text: |
+            O Scratch é desenvolvido e mantido pela Equipe do Scratch no grupo Lifelong Kindergarten no MIT Media Lab.
+  utter_scratch_language:
+     - text: |
+            O editor do Scratch 3.0 já foi traduzido em mais de 40 línguas.
+
+            Todas as traduções são feitas por voluntários.
+
+            Para mudar o idioma dos blocos de programação, clique no ícone do “globo” na barra superior no editor, e clique no seletor para escolher um idioma.
+  utter_what_is_a_project_copy:
+    - text: |
+            Quando um Scratcher faz uma cópia de um projeto de alguém e o modifica,
+            adicionando suas próprias ideias (por exemplo, mudando os personagens ou trajes) o resultado desse projeto é chamado de remix.
+            
+            Todos os projetos compartilhados no site do Scratch podem ser remixados.
+
+            Consideramos que a menor mudança é válida como uma remixagem, 
+            desde que os créditos sejam dados ao autor original do projeto e aqueles que fizeram contribuições significativas à remixagem.
+  utter_why_projects_needs_to_be_remixed:
+    - text: |
+            Nós acreditamos que remixar projetos de outras pessoas é uma ótima forma de aprender a programar e criar projetos interessantes. 
+            
+            Por meio da remixagem, ideias criativas são espalhadas por meio da comunidade Scratch, e todos se beneficiam.
+
+            Todos os projetos compartilhados no site do Scratch são têm licença "Creative Commons Share Alike" - Atribuição - NãoComercial - Compartilha Igual.
+
+            O que significa que você pode remixar qualquer projeto que você vê no site do Scratch - e todos podem remixar qualquer projeto que você compartilha no site.
+  utter_dont_allow_changes_on_my_project:
+    - text: |
+            Remixagem é uma parte importante da comunidade Scratch.
+            
+            Se você não quer que outros vejam ou remixem suas criações, você ainda pode criar projetos no site do Scratch,
+             mas não compartilhá-los no site. =(
+  utter_use_sounds_images_media_project:
+    - text: |
+            Se você decidir usar o trabalho de outra pessoa em seu projeto, 
+            coloque os devidos créditos na seção "notas e créditos" da página de projeto, e inclua um link para o projeto original. 
+            
+            Para encontrar arte / sons que já têm uma licença para remisturar, veja https://search.creativecommons.org/
+  utter_why_is_util_have_a_scratch_account:
+    - text: |
+            Mesmo sem uma conta, você pode ativar projetos de outras pessoas, ler comentários e fóruns, e ainda criar seus próprios projetos.
+            
+            Mas você precisa de um cadastro para salvar e compartilhar seus projetos, escrever comentários e postagens no fórum,
+            e participar em outras atividades sociais na comunidade (como "gostar" de projetos de outras pessoas).
+  utter_how_create_a_scratch_account:
+    - text: |
+            Apenas clique em "Inscreva-se" na página inicial do Scratch.
+            
+            Você precisará responder algumas perguntas, e providenciar um endereço de e-mail.
+
+            Leva só alguns minutos, e é completamente grátis! ;)
+  utter_can_i_use_prints:
+    - text: |
+            Apenas clique em "Inscreva-se" na página inicial do Scratch.Sim, você pode usar capturas de tela/imagens do editor do Scratch e do website em um livro ou apresentação,
+            e considere-as licenciadas pela licença Creative Commons
+            
+            Pedimos que você inclua uma nota em algum lugar de seus materiais dizendo: 
+
+            "O Scratch é um projeto da Fundação Scratch, em colaboração com o grupo Lifelong Kindergarten no MIT Media Lab. Está disponível gratuitamente em https://scratch.mit.edu".
+  utter_can_i_use_a_scracth_description:
+    - text: |
+            Claro! Recomendamos a seguinte descrição:
+            
+            "O Scratch é uma linguagem de programação e comunidade online onde você pode criar suas próprias histórias,
+            jogos e animações. Quando jovens criam e compartilham projetos no Scratch, eles aprendem a pensar criativamente,
+            raciocinar sistematicamente, e trabalhar em grupo. 
+            O Scratch é um projeto da Fundação Scratch em colaboração com o grupo Lifelong Kindergarten no MIT Media Lab. 
+            Está disponível gratuitamente em https://scratch.mit.edu".
+  utter_can_i_present_scratch:
+    - text: |
+            Por favor sinta-se livre para fazer apresentações sobre o Scratch para educadores ou outros grupos. ;)
+  utter_can_i_use_all_materials_from_scratch:
+    - text: |
+            Sim a maior parte dos materiais de suporte no site do Scratch estão disponíveis sob a licença Creative Commons.
+
+            Há algumas exceções: o logo Scratch, o gato do Scratch, o Gobo, Pico, Nano, Giga e Tera são marcas do Scratch,
+            e não podem ser utilizados sem a permissão explícita do Scratch Team.
+  utter_can_i_sell_projects:
+    - text: |
+            Seu projeto do Scratch é sua criação.
+
+            Mas tenha em mente que quando você o compartilha no website no Scratch,
+            todos são livres para baixar, remisturar e reutilizar o projeto baseados nos termos da licença Creative Commons.
+
+            Então se você considera vender seu projeto, você pode querer descompatilhá-lo do website do Scratch.
+  utter_what_are_extensions:
+    - text: |
+            Você pode adicionar coleções de blocos extras.
+
+            Por exemplo, há extensões que permitem que você programe dispositivos físicos (como kits de micro:bits e de robótica LEGO)
+            e traduza textos em seus projetos do Scratch.
+
+            Continuaremos adicionando novas extensões, então o que você pode fazer com o Scratch continuará a crescer ao longo do tempo.
+  utter_how_can_i_add_extensions:
+    - text: |
+            Se você clicar no botão "Extensões" no canto inferior esquerdo do editor do Scratch, você verá uma lista de todas as extensões do Scratch.
+
+            Quando você seleciona uma das extensões, uma nova categoria de blocos será adicionada ao seu projeto.
+
+            A extensão será carregada automaticamente toda vez que seu projeto for aberto. Você pode adicionar várias extensões ao mesmo projeto.
+  utter_how_can_i_create_extensions:
+    - text: |
+            A Equipe Scratch estará publicando especificações e diretrizes para extensões no futuro.
+
+            Uma vez disponível, você poderá enviar extensões para a Equipe Scratch para consideração na biblioteca oficial de extensões do Scratch 3.0.
+
+            Também forneceremos diretrizes para o desenvolvimento e a distribuição de extensões "experimentais", que podem ser usadas para criar projetos em computadores individuais,
+             mas não compartilhadas na comunidade online do Scratch.
+  utter_what_are_cloud_variables:
+    - text: |
+            As variáveis ​​da nuvem permitem que os dados de um projeto sejam salvos e compartilhados com outras pessoas na comunidade do Scratch.
+
+            Você pode usar variáveis ​​da nuvem para fazer pesquisas e outros projetos em que outras pessoas da comunidade acessem e modifiquem os dados ao longo do tempo.
+  utter_who_can_see_cloud_variables:
+    - text: |
+           Quando você interage com um projeto usando variáveis ​​da nuvem, 
+           os dados associados as suas interações podem ser armazenados junto com seu nome de usuário, e outros podem visualizá-lo.
+  utter_what_types_cloud_variables_can_store:
+    - text: |
+           Somente números podem ser armazenados nas variáveis em nuvem. =)
+  utter_how_can_i_make_a_cloud_variable:
+    - text: |
+           Vá para a seção "Variáveis" da paleta de blocos, selecione "Criar uma variável" e clique na caixa de seleção ao lado de "Variável de nuvem (armazenada no servidor)".
+
+           Os dados associados à sua variável na nuvem serão armazenados no servidor, preservados ao longo do tempo e acessíveis a qualquer pessoa que abrir o projeto.
+  utter_how_scratch_is_used_in_schools:
+    - text: |
+           O Scratch é usado em centenas de milhares de escolas ao redor do mundo, em muitas áreas diferentes (incluindo artes da linguagem, ciências, história, matemática e ciência da computação).
+
+           Você pode aprender mais sobre estratégias e recursos para usar o Scratch em escolas
+           e outros ambientes de aprendizado (como museus, bibliotecas e centros comunitários) em nossa página do Educador(https://scratch.mit.edu/educators).
+  utter_can_we_use_scratch_without_internet:
+    - text: |
+           Scratch Desktop é uma versão do Scratch que roda em um computador desktop ou laptop. Atualmente, o Scratch Desktop está disponível para Mac e Windows.
+
+           Você pode encontrar o Scratch Desktop aqui https://scratch.mit.edu/download
+
+           Mas...
+
+           Se você usar o Scratch Desktop, não poderá conversar mais comigo =(
+  utter_what_kind_of_data_scratch_collect:
+    - text: |
+           Quando um aluno faz login pela primeira vez no Scratch, pedimos alguns dados demográficos básicos, como gênero, idade (mês e ano de nascimento), país, e endereço de e-mail para verificação.
+
+           Esses dados são usados (de forma agregada) em estudos de pesquisa que visam melhorar nosso entendimento sobre como as pessoas aprendem com o Scratch.
+
+           Quando um educador usa uma Conta de Professor do Scratch para criar contas de alunos em massa, os alunos não precisam fornecer um endereço de e-mail para a configuração da conta.
+actions:
+  - utter_default
+  - utter_greeting
+  - utter_goodbye
+  - utter_how_are_u
+  - utter_tell_me_more
+  - utter_praise
+  - utter_deny
+
+  - utter_religion
+  - utter_sports
+  - utter_club
+  - utter_programming_lang
+  - utter_genre
+  - utter_star_wars
+  - utter_joke
+  - utter_license
+  - utter_where_do_u_live
+  - utter_how_am_i
+  - utter_playlist
+  - utter_food
+  - utter_color
+  - utter_where_are_u_from
+  - utter_relationship
+  - utter_me
+  - utter_children
+  - utter_movie
+  - utter_zodiac
+  - utter_sad
+  - utter_hobby
+  - utter_bff
+  - utter_story
+  - utter_laugh
+
+  - utter_what_is_scratch
+  - utter_who_uses_scratch
+  - utter_scratch_requirements
+  - utter_scratch_price
+  - utter_scratch_creator
+  - utter_scratch_language
+  - utter_what_is_a_project_copy
+  - utter_why_projects_needs_to_be_remixed
+  - utter_dont_allow_changes_on_my_project
+  - utter_use_sounds_images_media_project
+  - utter_why_is_util_have_a_scratch_account
+  - utter_how_create_a_scratch_account
+  - utter_can_i_use_prints
+  - utter_can_i_use_a_scracth_description
+  - utter_can_i_present_scratch
+  - utter_can_i_use_all_materials_from_scratch
+  - utter_can_i_sell_projects
+  - utter_what_are_extensions
+  - utter_how_can_i_add_extensions
+  - utter_how_can_i_create_extensions
+  - utter_what_are_cloud_variables
+  - utter_who_can_see_cloud_variables
+  - utter_what_types_cloud_variables_can_store
+  - utter_how_can_i_make_a_cloud_variable
+  - utter_how_scratch_is_used_in_schools
+  - utter_can_we_use_scratch_without_internet
+  - utter_what_kind_of_data_scratch_collect
+
+  - action_test
