@@ -11,6 +11,7 @@ services:
       - 3000:3000
     depends_on:
       - mongo
+      - cron
 
   mongo:
     image: mongo:4.0
@@ -36,6 +37,12 @@ services:
         done; (exit $$s)"
     depends_on:
       - mongo
+
+  cron:
+    image: wenbinf/ndscheduler
+    restart: unless-stopped
+    ports: 
+      - 8888:8888
 
   coach:
     container_name: coach
