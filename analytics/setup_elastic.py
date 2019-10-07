@@ -26,7 +26,7 @@ settings = {
                 "version":           {"type": "keyword"},
                 "user_id":           {"type": "keyword"},
                 "is_bot":            {"type": "boolean"},
-                "text":              {"type": "text"},
+                "text":              {"type": "keyword"},
                 "tags":              {"type": "keyword"},
                 "timestamp":         {"type": "date",
                                       "format": "yyyy/MM/dd HH:mm:ss"},
@@ -45,6 +45,8 @@ settings = {
                 },
                 "utter_name":        {"type": "keyword"},
                 "is_fallback":       {"type": "boolean"},
+                "is_question":       {"type": "boolean"},
+                "message_origin":    {"type": "keyword"},
             }
         }
     }

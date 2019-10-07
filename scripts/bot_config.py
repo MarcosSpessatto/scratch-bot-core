@@ -124,10 +124,15 @@ def create_roles():
 
 def create_rocket_room():
     try:
-        api_post('channels.create', {
+        response = api_post('channels.create', {
                  'name': 'scratch',
                  'members': ['rocket.cat'],
                  })
+
+        api_post('channels.setDefault', {
+            'roomId': response['channel']['_id'],
+            'default': True
+        })
     except Exception:
         print("Not possible update user")
 

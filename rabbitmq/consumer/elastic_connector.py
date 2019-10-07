@@ -4,6 +4,8 @@ import time
 import datetime
 import hashlib
 import json
+import re
+import string
 
 from elasticsearch import Elasticsearch
 
@@ -72,6 +74,11 @@ class ElasticConnector():
 
         # Bag of words
         tags = []
+        is_question = '?' in user_message['text']
+        remove = string.punctuation
+        pattern = r"[{}]".format(remove)
+        user_message['text'] = re.sub(pattern, '', user_message['text'])
+
         for word in user_message['text'].replace('. ', ' ') \
                 .replace(',', ' ') \
                 .replace('"', '') \
@@ -83,6 +90,9 @@ class ElasticConnector():
             if word.lower() not in stopwords.words('portuguese') and \
                                                         len(word) > 1:
                 tags.append(word)
+
+
+        message_origin = 'bot' if user_message['input_channel'] == 'rest' else 'group'
 
         message = {
             'environment': ENVIRONMENT_NAME,
@@ -101,6 +111,8 @@ class ElasticConnector():
                                               ['intent']['confidence']),
             'utter_name': '',
             'is_fallback': False,
+            'is_question': is_question,
+            'message_origin': message_origin
         }
 
         self.insert_on_elastic(ts, message)
