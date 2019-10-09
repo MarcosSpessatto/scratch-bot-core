@@ -20,7 +20,7 @@ services:
       - ./data/db:/data/db
     ports:
       - 27017:27017
-    command: mongod --smallfiles --oplogSize 128 --replSet rs0 --storageEngine=mmapv1
+    command: mongod --smallfiles --oplogSize 128 --replSet rs0
 
   mongo-init-replica:
     image: mongo:4.0
@@ -53,6 +53,18 @@ services:
     volumes:
       - ./data/notebook_models:/notebook_models
     command: sh -c "cp -r /src_models/* /notebook_models"
+
+  summarization:
+    container_name: summarization
+    image: scratchbotcore/summarization
+    build:
+      context: .
+      dockerfile: ./docker/summarization.Dockerfile
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongo
+    command: sh -c "python server.py"
 
   bot:
     image: scratchbotcore/bot:boilerplate
