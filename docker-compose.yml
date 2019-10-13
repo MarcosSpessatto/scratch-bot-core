@@ -97,21 +97,21 @@ services:
       - ./bot/Makefile:/bot/Makefile
     command: bash -c "rasa run actions --actions actions"
 
-  notebooks:
-    container_name: notebooks
-    build:
-      context: .
-      dockerfile: ./docker/notebooks.Dockerfile
-    env_file:
-      - docker/notebooks.env
-    volumes:
-      - ./coach:/work/coach
-      - ./notebooks:/work/notebooks
-      - ./data/notebook_models:/models:ro
-    ports:
-      - 8888:8888
-    depends_on:
-      - coach
+  # notebooks:
+  #   container_name: notebooks
+  #   build:
+  #     context: .
+  #     dockerfile: ./docker/notebooks.Dockerfile
+  #   env_file:
+  #     - docker/notebooks.env
+  #   volumes:
+  #     - ./coach:/work/coach
+  #     - ./notebooks:/work/notebooks
+  #     - ./data/notebook_models:/models:ro
+  #   ports:
+  #     - 8888:8888
+  #   depends_on:
+  #     - coach
 
   rabbitmq:
     image: rabbitmq:3-management
