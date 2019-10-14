@@ -1,6 +1,15 @@
 version: '2'
 
 services:
+  scratch-gui:
+    container_name: scratch-gui
+    image: scratchbotcore/scratch-gui
+    build:
+      context: .
+      dockerfile: ./docker/scratch-gui.Dockerfile
+    ports:
+      - 8601:8601
+
   rocketchat:
     container_name: rocketchat
     image: defendi/rocketchat

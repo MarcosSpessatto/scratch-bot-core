@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google" value="notranslate">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="shortcut icon" href="static/favicon.ico">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <% if (htmlWebpackPlugin.options.sentryConfig) { %>
+  <!-- Sentry error logging to help with finding bugs -->
+  <script src="https://cdn.ravenjs.com/3.22.1/raven.min.js" crossorigin="anonymous"></script>
+  <script>
+    Raven.config(<%= htmlWebpackPlugin.options.sentryConfig %>).install();
+  </script>
+  <!-- /Sentry -->
+  <% } %>
+</head>
+
+<body>
+  <!-- Start of Rocket.Chat Livechat Script -->
+  <script type="text/javascript">
+    (function (w, d, s, u) {
+      const interval = setInterval(() => {
+        const user = JSON.parse(localStorage.getItem('rocketUser'));
+        if (localStorage.getItem('rocketUser')) {
+          w.RocketChat = function (c) { w.RocketChat._.push(c) }; w.RocketChat._ = []; w.RocketChat.url = u;
+          var h = d.getElementsByTagName(s)[0], j = d.createElement(s);
+          j.async = true; j.src = `${process.env.RC_URL}/livechat/rocketchat-livechat.min.js?_=201903270000`;
+          h.parentNode.insertBefore(j, h);
+          clearInterval(interval);
+
+          w.RocketChat(function () {
+            this.registerGuest({
+              name: user.name,
+              email: user.email,
+              username: user.username,
+            });
+          })
+        }
+      }, 5000);
+
+    })(window, document, 'script', `${process.env.RC_URL}/livechat`);
+  </script>
+  <!-- End of Rocket.Chat Livechat Script -->
+</body>
+
+</html>

@@ -201,3 +201,7 @@ tags
 
 # End of https://www.gitignore.io/api/vim,linux,macos,python
 env
+scratch-gui/node_modules
+scratch-gui/build
+scratch-gui/dist
+scratch-gui/*.lock
