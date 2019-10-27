@@ -36,7 +36,7 @@ def save_message():
     message_to_save['updatedAt'] = dateutil.parser.parse(message_to_save['updatedAt']) - timedelta(hours=3)
     remove = string.punctuation
     pattern = r"[{}]".format(remove)
-    message_to_save['text'] = re.sub(pattern, '', message_to_save['text'])
+    message_to_save['text'] = re.sub(pattern, ' ', message_to_save['text'])
     messages.insert_one(message_to_save)
     return jsonify(success=True)
 

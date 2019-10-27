@@ -77,7 +77,7 @@ class ElasticConnector():
         is_question = '?' in user_message['text']
         remove = string.punctuation
         pattern = r"[{}]".format(remove)
-        user_message['text'] = re.sub(pattern, '', user_message['text'])
+        user_message['text'] = re.sub(pattern, ' ', user_message['text'])
 
         for word in user_message['text'].replace('. ', ' ') \
                 .replace(',', ' ') \

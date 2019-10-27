@@ -122,21 +122,6 @@ def create_roles():
     except Exception:
         print("Not possible update user")
 
-def create_rocket_room():
-    try:
-        response = api_post('channels.create', {
-                 'name': 'scratch',
-                 'members': ['rocket.cat'],
-                 })
-
-        api_post('channels.setDefault', {
-            'roomId': response['channel']['_id'],
-            'default': True
-        })
-    except Exception:
-        print("Not possible update user")
-
-
 def create_livechat_agent():
     response = api_post('livechat/users/agent', {'username': bot['username']})
     return response['user']['_id']
@@ -190,9 +175,6 @@ if __name__ == '__main__':
 
         logger.info('>> Create Roles')
         create_roles()
-
-        logger.info('>> Create Rocket Room')
-        create_rocket_room()
 
     else:
         logger.error('Login Failed')

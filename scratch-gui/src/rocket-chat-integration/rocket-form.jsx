@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Cat from '../../static/cat.png';
 import swal from 'sweetalert';
+import moment from 'moment';
+import { getShift } from './date.helper';
 
 export class RocketForm extends Component {
 
@@ -79,6 +81,49 @@ export class RocketForm extends Component {
 			});
 	}
 
+	createRoomIfNotExists() {
+		const now = moment();
+		const shift = getShift(moment(now.format('HH:mm'), 'h:mma'));
+		const channelName = `${now.format('DD-MM-YYYY')}-${shift}`;
+		return fetch(`${this.url}/api/v1/channels.info?roomName=${channelName}`, {
+			method: 'GET',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				'X-Auth-Token': this.rcAuth.authToken,
+				'X-User-Id': this.rcAuth.userId,
+			},
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				if (res.success === false && res.errorType !== 'error-room-not-found') {
+					throw new Error(res.errorType);
+				}
+				if (res.success === false && res.errorType === 'error-room-not-found') {
+					return fetch(`${this.url}/api/v1/channels.create`, {
+						method: 'POST',
+						headers: {
+							'Accept': 'application/json',
+							'Content-Type': 'application/json',
+							'X-Auth-Token': this.rcAuth.authToken,
+							'X-User-Id': this.rcAuth.userId,
+						},
+						body: JSON.stringify({
+							name: channelName,
+						})
+					})
+						.then((res) => res.json())
+						.then((res) => {
+							if (res.success === false) {
+								throw new Error(res.errorType);
+							}
+							return res.channel;
+						});
+				}
+				return res.channel;
+			});
+	}
+
 	verifyIfRCUserAlreadyExists() {
 		const { username } = this.state;
 		return fetch(`${this.url}/api/v1/users.info?username=${username}`, {
@@ -114,7 +159,31 @@ export class RocketForm extends Component {
 		this.props.onRocketRegisterDone();
 	}
 
+	addUserToTheChannel(channel, user) {
+		return fetch(`${this.url}/api/v1/channels.invite`, {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				'X-Auth-Token': this.rcAuth.authToken,
+				'X-User-Id': this.rcAuth.userId,
+			},
+			body: JSON.stringify({
+				roomId: channel._id,
+				userId: user._id,
+			})
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				if (res.success === false) {
+					throw new Error(res.errorType);
+				}
+				return user;
+			});
+	}
+
 	onSubmit(event) {
+		let userCreated;
 		event.preventDefault();
 		if (this.state.password !== this.state.rePassword) {
 			return swal('As senhas não são iguais!', '', 'warning');
@@ -125,6 +194,7 @@ export class RocketForm extends Component {
 		}
 		this.setState({ loading: true });
 		this.doRCLogin()
+			.then(() => this.createRoomIfNotExists())
 			.then(() => this.verifyIfRCUserAlreadyExists())
 			.then((user) => {
 				if (!user) {
@@ -132,8 +202,16 @@ export class RocketForm extends Component {
 				}
 				return user;
 			})
+			.then((user) => {
+				userCreated = user;
+				return this.createRoomIfNotExists();
+			})
+			.then((channel) => this.addUserToTheChannel(channel, userCreated))
 			.then((user) => this.saveUserOnLocalStorageAndShowStatus(user))
-			.catch((e) => swal('Ops, parece que o email ou o nome de usuário já estão sendo usados', '', 'error'));
+			.catch((e) => {
+				this.setState({ loading: false });
+				swal('Ops, parece que o email ou o nome de usuário já estão sendo usados', '', 'error')
+			});
 	}
 
 	onChangeValue(field, value) {

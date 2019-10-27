@@ -34,6 +34,7 @@ policies:
     nlu_threshold: 0.3
     core_threshold: 0.3
     priority: 1
+    fallback_action_name: "action_default_fallback"
   # - name: MemoizationPolicy
   #   priority: 2
   #   max_history: 2
