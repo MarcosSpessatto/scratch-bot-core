@@ -43,7 +43,9 @@ def save_message():
 @app.route('/summary', methods=['GET'])
 def get_summary():
     frequency = request.args.get('frequency')
+    room = request.args.get('room')
     query = get_filter_by_date(frequency)
+    query['room'] = room
     messages = db['messages']
     documents = messages.find(query)
     SENTENCES_COUNT = fourty_percent(documents.count())
