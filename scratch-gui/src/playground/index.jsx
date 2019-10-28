@@ -7,7 +7,6 @@ import 'intl'; // For Safari 9
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import analytics from '../lib/analytics';
 import AppStateHOC from '../lib/app-state-hoc.jsx';
 import BrowserModalComponent from '../components/browser-modal/browser-modal.jsx';
 import supportedBrowser from '../lib/supported-browser';
@@ -17,9 +16,6 @@ import { RocketForm } from '../rocket-chat-integration';
 import M from 'materialize-css';
 import BackgroundImage from '../../static/background.jpg';
 M.AutoInit();
-
-// Register "base" page view
-analytics.pageview('/');
 
 const appTarget = document.createElement('div');
 appTarget.className = styles.app;
