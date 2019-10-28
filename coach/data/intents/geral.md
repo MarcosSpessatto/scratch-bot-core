@@ -42,8 +42,8 @@
 - boa tarde
 - boa noite
 - olá
+- oi
 - oie
-- oiee
 - opa tudo bem
 - ola boa tarde
 
@@ -51,7 +51,7 @@
 - Você é  muito educado!
 - Adorei
 - Me ajudou muito
-- vc eh linda
+- vc eh lindo
 
 ## intent:deny
 - não sei onde a minha pergunta se encaixa
@@ -87,7 +87,7 @@
 
 ## intent:how_are_u
 - Tudo bem
-- Como vocês esta
+- Como você esta
 - como ta
 - joia
 - joinha

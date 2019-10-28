@@ -95,7 +95,7 @@ class ElasticConnector():
         message_origin = 'bot' if user_message['input_channel'] == 'rest' else 'group'
 
         message = {
-            'environment': ENVIRONMENT_NAME,
+            'environment': 'production',
             'version': BOT_VERSION,
 
             'user_id': user_message['sender_id'],
@@ -110,7 +110,7 @@ class ElasticConnector():
             'intent_confidence': (user_message['parse_data']
                                               ['intent']['confidence']),
             'utter_name': '',
-            'is_fallback': False,
+            'is_fallback': user_message['parse_data']['intent']['confidence'] < 0.3,
             'is_question': is_question,
             'message_origin': message_origin
         }
@@ -125,7 +125,7 @@ class ElasticConnector():
         )
 
         message = {
-            'environment': ENVIRONMENT_NAME,
+            'environment': 'production',
             'version': BOT_VERSION,
             'user_id': user_message['sender_id'],
 
@@ -140,7 +140,7 @@ class ElasticConnector():
             'intent_confidence': '',
 
             'utter_name': action_message['name'],
-            'is_fallback': action_message['name'] == 'action_default_fallback',
+            'is_fallback': False,
         }
 
         self.insert_on_elastic(ts, message)

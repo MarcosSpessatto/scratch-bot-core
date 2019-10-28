@@ -349,42 +349,6 @@
 		}
 	  },
 	  {
-		"id": "940af720-4a4b-11e9-9faf-3521ed822de9",
-		"type": "visualization",
-		"updated_at": "2019-08-29T15:07:55.637Z",
-		"version": "WzQ0NywxNV0=",
-		"attributes": {
-		  "title": "Quantidade de pessoas que usaram #MEAJUDA",
-		  "visState": "{\"title\":\"Quantidade de pessoas que usaram #MEAJUDA\",\"type\":\"metric\",\"params\":{\"addTooltip\":true,\"addLegend\":false,\"type\":\"metric\",\"metric\":{\"percentageMode\":false,\"useRanges\":false,\"colorSchema\":\"Green to Red\",\"metricColorMode\":\"None\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"labels\":{\"show\":true},\"invertColors\":false,\"style\":{\"bgFill\":\"#000\",\"bgColor\":false,\"labelColor\":false,\"subText\":\"\",\"fontSize\":35}}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"cardinality\",\"schema\":\"metric\",\"params\":{\"field\":\"user_id\",\"customLabel\":\"Usuários pediram #MEAJUDA\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Mensagens #MEAJUDA\"}}]}",
-		  "uiStateJSON": "{}",
-		  "description": "",
-		  "version": 1,
-		  "kibanaSavedObjectMeta": {
-			"searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[{\"meta\":{\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"intent_name\",\"value\":\"o_que_sei_falar\",\"params\":{\"query\":\"o_que_sei_falar\",\"type\":\"phrase\"},\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index\"},\"query\":{\"match\":{\"intent_name\":{\"query\":\"o_que_sei_falar\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}},{\"meta\":{\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"is_bot\",\"value\":\"false\",\"params\":{\"query\":false,\"type\":\"phrase\"},\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.filter[1].meta.index\"},\"query\":{\"match\":{\"is_bot\":{\"query\":false,\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
-		  }
-		},
-		"references": [
-		  {
-			"name": "kibanaSavedObjectMeta.searchSourceJSON.index",
-			"type": "index-pattern",
-			"id": "194404f0-e6b4-11e8-bb67-918dc5752875"
-		  },
-		  {
-			"name": "kibanaSavedObjectMeta.searchSourceJSON.filter[0].meta.index",
-			"type": "index-pattern",
-			"id": "194404f0-e6b4-11e8-bb67-918dc5752875"
-		  },
-		  {
-			"name": "kibanaSavedObjectMeta.searchSourceJSON.filter[1].meta.index",
-			"type": "index-pattern",
-			"id": "194404f0-e6b4-11e8-bb67-918dc5752875"
-		  }
-		],
-		"migrationVersion": {
-		  "visualization": "7.3.0"
-		}
-	  },
-	  {
 		"id": "fc3a57d0-78b0-11e9-b7f8-ab32b998c172",
 		"type": "visualization",
 		"updated_at": "2019-08-29T15:07:55.637Z",

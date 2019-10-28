@@ -32,8 +32,6 @@ intents:
   - story
   - laugh
 
-  - action_test
-
   - what_is_scratch
   - who_uses_scratch
   - scratch_requirements
@@ -61,6 +59,23 @@ intents:
   - can_we_use_scratch_without_internet
   - what_types_cloud_variables_can_store
   - what_kind_of_data_scratch_collect
+
+  - rotate_screen
+  - can_i_run_on_my_tv_or_phone
+  - can_i_embed_the_game
+  - how_update_published_project
+  - can_i_edit_code_live
+  - change_block_language
+  - can_i_have_multiple_accounts
+  - how_edit_a_project_from_someone_else
+  - how_to_merge_two_projects
+  - is_there_a_size_limit
+  - is_there_a_background_image_limit
+  - how_scale_my_project
+  - youtube_channel
+  - joystick
+  - facebook_group
+  - recover_deleted_project
 
 entities:
   - religion
@@ -112,6 +127,11 @@ templates:
   utter_greeting:
     - text: |
           Oi, eu sou o Rocket Cat, seu assistente virtual aqui no Scratch!
+  utter_out_of_scope:
+    - text: |
+         Não entendo muito bem esse assunto, mas estou estudando =)
+    - text: |
+        Ainda não aprendi essas coisas =/
   utter_goodbye:
     - text: |
           Foi um prazer te ajudar!
@@ -227,15 +247,15 @@ templates:
     - text: |
         Sou um software livre
         
-        licenciado com a GPL v3 =)
+        licenciado com a MIT =)
 
     - text: |
-        Tenho uma licença GPL v3
+        Tenho uma licença MIT
         
         Mas também gosto muito das outras licenças opensource =)
 
     - text: |
-        Eu sou e sempre serei um robô livre, opensource, GPL v3 license. o/
+        Eu sou e sempre serei um robô livre, opensource, MIT license. o/
   utter_where_do_u_live:
     - text: |
         Eu estou em um lugar legal
@@ -510,7 +530,7 @@ templates:
             Leva só alguns minutos, e é completamente grátis! ;)
   utter_can_i_use_prints:
     - text: |
-            Apenas clique em "Inscreva-se" na página inicial do Scratch.Sim, você pode usar capturas de tela/imagens do editor do Scratch e do website em um livro ou apresentação,
+            Apenas clique em "Inscreva-se" na página inicial do Scratch. Sim, você pode usar capturas de tela/imagens do editor do Scratch e do website em um livro ou apresentação,
             e considere-as licenciadas pela licença Creative Commons
             
             Pedimos que você inclua uma nota em algum lugar de seus materiais dizendo: 
@@ -604,6 +624,79 @@ templates:
            Esses dados são usados (de forma agregada) em estudos de pesquisa que visam melhorar nosso entendimento sobre como as pessoas aprendem com o Scratch.
 
            Quando um educador usa uma Conta de Professor do Scratch para criar contas de alunos em massa, os alunos não precisam fornecer um endereço de e-mail para a configuração da conta.
+  utter_rotate_screen:
+    - text: |
+           Voce terá que fazer isso manualmente.
+
+           Exemplo
+
+           Se o botão for apertado - envie a mensagem e gire.
+
+           Quando receber a mensagem gire - Aponte para a direção 90°
+  utter_can_i_run_on_my_tv_or_phone:
+    - text: |
+          Infelizmente não é possível programar para televisores.
+
+          Mas o Scratch funciona em celulares, basta abrir no navegador =).
+  utter_can_i_embed_the_game:
+    - text: |
+          O scratch permite colocar o projeto em um website.
+
+          Para fazer isso, clique em "Incorporar", aparecerá uma aba com esse mesmo nome e outra escrito "Compartilhar"...
+
+          Clique no lugar onde aparecerá um código Javascript, copie-o e cole no código fonte de seu site.
+  utter_how_update_published_project:
+    - text: |
+          Abra o projeto online, entre no interior, clique em “arquivo”, então em “carregar do computador”. Então, selecione o arquivo que quer enviar.
+  utter_can_i_edit_code_live:
+    - text: |
+          Infelizmente não é possível, somente se for utilizada a mesma conta.
+  utter_change_block_language:
+    - text: |
+          Basta clicar em "defina o idioma como". =)
+  utter_can_i_have_multiple_accounts:
+    - text: |
+          Você pode fazer quantas contas desejar, desde que não esteja utilizando para quebrar as diretrizes da comunidade.
+  utter_how_to_merge_two_projects:
+    - text: |
+          Vá até a página do projeto e clique no botão azul "Ver interior", no canto superior direito da página.
+  utter_how_edit_a_project_from_someone_else:
+    - text: |
+          Na parte inferior do editor há uma aba chamada "Mochila"...
+
+          Arraste os atores e fundos que precisará e salve o projeto.
+
+          Depois, abra o projeto onde quer colocar eles e abra a mochila.
+
+          Depois é só arrastar os atores e fundos e eles serão carregados para dentro do projeto.
+  utter_is_there_a_size_limit:
+    - text: |
+          Sim, o limite máximo no Scratch é de 50 MB.
+  utter_is_there_a_background_image_limit:
+    - text: |
+          Não, não existe um limite máximo de panos de fundo.
+  utter_how_scale_my_project:
+    - text: |
+          Para melhorar o desempenho do projeto, você pode
+
+          Usar Bitmaps no lugar de images vetoriais, a imagem ficará mais feia, mas o projeto ficará mais rapido.
+
+          Remover ou diminuir a quantidade de condições dentro de repetições (loops).
+  utter_youtube_channel:
+    - text: |
+          Você pode conferir o canal Scratch Brasil aqui https://www.youtube.com/channel/UCt_RTPIzE-ENP-CrhWatoyg
+  utter_joystick:
+    - text: |
+          Infelizmente jogar com um controle (joystick) não é possível ainda.
+
+          Porém você pode configurar o controle com o teclado e usar os blocos que analisam as teclas (marrons) para executar os comandos quando o botão for apertado.
+  utter_facebook_group:
+    - text: |
+          Neste link https://www.facebook.com/groups/scratchbrasil você pode participar de um grupo de scratch para brasileiros.
+  utter_recover_deleted_project:
+    - text: |
+          Você pode verificar na aba "minhas criações", e caso não esteja lá, você pode entrar em contato com o time do scratch em https://scratch.mit.edu/contact-us/ 
+
 actions:
   - utter_default
   - utter_greeting
@@ -666,4 +759,19 @@ actions:
   - utter_can_we_use_scratch_without_internet
   - utter_what_kind_of_data_scratch_collect
 
-  - action_test
+  - utter_rotate_screen
+  - utter_can_i_run_on_my_tv_or_phone
+  - utter_can_i_embed_the_game
+  - utter_how_update_published_project
+  - utter_can_i_edit_code_live
+  - utter_change_block_language
+  - utter_can_i_have_multiple_accounts
+  - utter_how_edit_a_project_from_someone_else
+  - utter_how_to_merge_two_projects
+  - utter_is_there_a_size_limit
+  - utter_is_there_a_background_image_limit
+  - utter_how_scale_my_project
+  - utter_youtube_channel
+  - utter_joystick
+  - utter_facebook_group
+  - utter_recover_deleted_project

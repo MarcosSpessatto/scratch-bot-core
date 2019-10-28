@@ -6,12 +6,6 @@
 * how_are_u
     - utter_how_are_u
 
-## Hello How are you
-* greeting
-    - utter_greeting
-* how_are_u
-    - utter_how_are_u
-
 ## Tell me More
 * tell_me_more
     - utter_tell_me_more  
