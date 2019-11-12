@@ -54,7 +54,7 @@ export class RocketForm extends Component {
 		if (this.state.wantToBeTutor) {
 			roles.push('tutor');
 		}
-		return fetch(`${this.url}/api/v1/users.create`, {
+		return fetch(`${this.url}/api/v1/users.register`, {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
@@ -65,10 +65,9 @@ export class RocketForm extends Component {
 			body: JSON.stringify({
 				email,
 				username,
-				password,
+				pass: password,
 				name,
 				verified: true,
-				active: true,
 				roles,
 			})
 		})
@@ -117,6 +116,7 @@ export class RocketForm extends Component {
 							if (res.success === false) {
 								throw new Error(res.errorType);
 							}
+							localStorage.setItem('channel', JSON.stringify(res.channel));
 							return res.channel;
 						});
 				}
@@ -148,7 +148,8 @@ export class RocketForm extends Component {
 		const { _id, email, name, username } = user;
 		localStorage.setItem('rocketUser', JSON.stringify({ _id, email, name, username }));
 		const html = document.createElement("div");
-		html.innerHTML = `Usuário: <b>${this.state.username}</b><br> Para acessar o grupo de estudos no Rocket.Chat, acesse: <a href="${process.env.RC_URL}/channel/scratch" target="_blank">Rocket.Chat</a>`;
+		const channel = JSON.parse(localStorage.getItem('channel'));
+		html.innerHTML = `Usuário: <b>${this.state.username}</b><br> Para acessar o grupo de estudos no Rocket.Chat, acesse: <a href="${process.env.RC_URL}/channel/${channel.fname}" target="_blank">Rocket.Chat</a>`;
 
 		swal({
 			icon: 'success',
