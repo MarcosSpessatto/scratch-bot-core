@@ -16,6 +16,7 @@ export class RocketForm extends Component {
 			rePassword: '',
 			wantToBeTutor: false,
 			loading: false,
+			loginForm: false,
 		};
 		this.onSubmit = this.onSubmit.bind(this);
 		this.onChangeValue = this.onChangeValue.bind(this);
@@ -26,7 +27,7 @@ export class RocketForm extends Component {
 		this.url = process.env.RC_URL;
 	}
 
-	doRCLogin() {
+	doRCLogin({ username, password }) {
 		return fetch(`${this.url}/api/v1/login`, {
 			method: 'POST',
 			headers: {
@@ -34,8 +35,8 @@ export class RocketForm extends Component {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				username: 'admin',
-				password: 'admin',
+				username,
+				password,
 			})
 		})
 			.then((res) => res.json())
@@ -45,6 +46,7 @@ export class RocketForm extends Component {
 				}
 				this.rcAuth.authToken = res.data.authToken;
 				this.rcAuth.userId = res.data.userId;
+				return res.data.me;
 			})
 	}
 
@@ -151,11 +153,13 @@ export class RocketForm extends Component {
 		const channel = JSON.parse(localStorage.getItem('channel'));
 		html.innerHTML = `Usuário: <b>${this.state.username}</b><br> Para acessar o grupo de estudos no Rocket.Chat, acesse: <a href="${process.env.RC_URL}/channel/${channel.fname}" target="_blank">Rocket.Chat</a>`;
 
-		swal({
-			icon: 'success',
-			title: 'Seu usuário foi criado no Rocket.Chat',
-			content: html,
-		});
+		if (!this.state.loginForm) {
+			swal({
+				icon: 'success',
+				title: 'Seu usuário foi criado no Rocket.Chat',
+				content: html,
+			});
+		}
 		this.setState({ loading: false });
 		this.props.onRocketRegisterDone();
 	}
@@ -186,37 +190,75 @@ export class RocketForm extends Component {
 	onSubmit(event) {
 		let userCreated;
 		event.preventDefault();
-		if (this.state.password !== this.state.rePassword) {
-			return swal('As senhas não são iguais!', '', 'warning');
-		}
+		if (this.state.loginForm) {
+			if (!this.state.password || !this.state.username) {
+				return swal('Por favor preecha todos os campos!', '', 'warning');
+			}
+			this.setState({ loading: true });
+			this.doRCLogin({ username: this.state.username, password: this.state.password })
+				.then((user) => this.saveUserOnLocalStorageAndShowStatus(user))
+				.catch((e) => {
+					this.setState({ loading: false });
+					if (this.state.loginForm) {
+						swal('Ops, usuário não encontrado', '', 'error')
+					} else {
+						swal('Ops, parece que o email ou o nome de usuário já estão sendo usados', '', 'error')
+					}
+				});
+		} else {
+			if (this.state.password !== this.state.rePassword) {
+				return swal('As senhas não são iguais!', '', 'warning');
+			}
 
-		if (!this.state.email || !this.state.name || !this.state.password || !this.state.username) {
-			return swal('Por favor preecha todos os campos!', '', 'warning');
+			if (!this.state.email || !this.state.name || !this.state.password || !this.state.username) {
+				return swal('Por favor preecha todos os campos!', '', 'warning');
+			}
+			this.setState({ loading: true });
+			this.doRCLogin({ username: 'admin', password: 'admin' })
+				.then(() => this.createRoomIfNotExists())
+				.then(() => this.createRCUser())
+				.then((user) => {
+					userCreated = user;
+					return this.createRoomIfNotExists();
+				})
+				.then((channel) => this.addUserToTheChannel(channel, userCreated))
+				.then((user) => this.saveUserOnLocalStorageAndShowStatus(user))
+				.catch((e) => {
+					this.setState({ loading: false });
+					swal('Ops, parece que o email ou o nome de usuário já estão sendo usados', '', 'error')
+				});
 		}
-		this.setState({ loading: true });
-		this.doRCLogin()
-			.then(() => this.createRoomIfNotExists())
-			.then(() => this.verifyIfRCUserAlreadyExists())
-			.then((user) => {
-				if (!user) {
-					return this.createRCUser();
-				}
-				return user;
-			})
-			.then((user) => {
-				userCreated = user;
-				return this.createRoomIfNotExists();
-			})
-			.then((channel) => this.addUserToTheChannel(channel, userCreated))
-			.then((user) => this.saveUserOnLocalStorageAndShowStatus(user))
-			.catch((e) => {
-				this.setState({ loading: false });
-				swal('Ops, parece que o email ou o nome de usuário já estão sendo usados', '', 'error')
-			});
 	}
 
 	onChangeValue(field, value) {
 		this.setState({ [field]: value });
+	}
+
+	renderLogin() {
+		return (
+			<div style={{ padding: '30px' }}>
+				<div className="row">
+					<div className="input-field col s12">
+						<input id="username" name="username" type="text" value={this.state.username} onChange={(event) => this.onChangeValue('username', event.target.value)} />
+						<label htmlFor="username">Nome de Usuário</label>
+					</div>
+					<div className="input-field col s12">
+						<input id="password" name="password" type="password" value={this.state.password} onChange={(event) => this.onChangeValue('password', event.target.value)} />
+						<label htmlFor="password">Senha</label>
+					</div>
+				</div>
+				<div className="center">
+					<button className="waves-effect waves-light btn" type="submit">Enviar</button>
+				</div>
+				<br />
+				<div className="col s12">
+					<div className="center">
+						<button className="waves-effect waves-light btn" type="button" onClick={() => this.setState({ loginForm: false })}>Não tenho cadastro</button>
+					</div>
+				</div>
+				<br />
+			</div>
+		);
 	}
 
 	renderForm() {
@@ -252,6 +294,10 @@ export class RocketForm extends Component {
 				</div>
 				<div className="center">
 					<button className="waves-effect waves-light btn" type="submit">Enviar</button>
+				</div>
+				<br />
+				<div className="center">
+					<button className="waves-effect waves-light btn" type="button" onClick={() => this.setState({ loginForm: true })}>Já tenho cadastro</button>
 				</div>
 			</div>
 
@@ -292,7 +338,9 @@ export class RocketForm extends Component {
 							{
 								this.state.loading
 									? this.renderLoading()
-									: this.renderForm()
+									: this.state.loginForm ?
+										this.renderLogin() :
+										this.renderForm()
 							}
 						</form>
 					</div>
